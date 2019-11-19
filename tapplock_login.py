@@ -47,8 +47,13 @@ class tapplock(threading.Thread):
                 username = self.driver.find_element_by_id('com.intelligent.tapp.test:id/email')
                 break
             except:
-                self.taptest()
-                pass
+                while True:
+                    try:
+                        # self.taptest()
+                        self.driver.find_element_by_id('com.intelligent.tapp.test:id/next').click()
+                        break
+                    except:
+                        pass
         username.send_keys('877840950@qq.com')
         self.driver.find_element_by_id('com.intelligent.tapp.test:id/password').send_keys(password)
         self.driver.find_element_by_id('com.intelligent.tapp.test:id/login').click()
@@ -83,9 +88,7 @@ class tapplock(threading.Thread):
                     except:
                         pass
 
-
         time.sleep(2)
-
 
         # driver.find_element_by_id('com.intelligent.tapp.test:id/add').click()
         # time.sleep(2)

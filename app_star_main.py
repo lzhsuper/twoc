@@ -96,10 +96,10 @@ class devices_find(Appium_star, threading.Thread):
         cmd_appium = 'appium'
         name = os.popen(cmd_devices)
         name = name.read()
-        self.result = re.findall(r'\n(.*)\t', name)
+        self.result = re.findall(r"\n(.*)\t", name)
         self.android_sum = []
         for device in self.result:
-            android_result = re.findall('(.*)\\n',
+            android_result = re.findall("(.*)\\n",
                                         os.popen('adb -s ' + device + ' shell getprop ro.build.version.release').read())
             android_result = ','.join(android_result)
             self.android_sum.append(android_result)
@@ -129,17 +129,19 @@ class devices_find(Appium_star, threading.Thread):
         self.result_and_duankou = dict(zip(self.result, self.duankou_num))
         # print(self.result_and_duankou)
         # print(self.result)
-
+        threadinglist = []
         for i in range(len(self.result_and_duankou)):
             # print(i)
             # print(self.result[int(i)], self.result_and_duankou[self.result[i]])
             t = threading.Thread(target=Appium_star.appium_start, args=(
             self, self.result[int(i)], self.result_and_duankou[self.result[i]], int(i) * int(i),
             int(self.android_sum[i])))
+            threadinglist.append(t)
             # Appium_star.appium_start(self,self.result[int(i)],self.result_and_duankou[self.result[i]])
             # t.setDaemon(True)
             # print(self.result[int(i)],self.result_and_duankou[self.result[i]],int(i)*int(i))
-            t.start()
+        for j in threadinglist:
+            j.start()
             # t.join()
         # return self.result_and_duankou,self.result
 
