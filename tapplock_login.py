@@ -40,7 +40,7 @@ class tapplock(threading.Thread):
         self.driver.find_element_by_id('com.intelligent.tapp.test:id/ok').click()
         time.sleep(0.5)
 
-    def login(self, password,ifnew):
+    def login(self, password, ifnew):
         while True:
             try:
                 time.sleep(0.5)
@@ -56,7 +56,8 @@ class tapplock(threading.Thread):
             try:
                 self.driver.find_element_by_accessibility_id('Setting')
                 print('修改后密码验证成功！')
-            except:print('修改后密码验证失败！')
+            except:
+                print('修改后密码验证失败！')
         else:
             # print(self.android_version)
             if self.android_version == 10:
@@ -66,27 +67,36 @@ class tapplock(threading.Thread):
                             'com.android.permissioncontroller:id/permission_allow_always_button').click()
                         break
                     except:
+                        try:
+                            self.driver.find_element_by_id(
+                                'com.android.permissioncontroller:id/permission_allow_foreground_only_button').click()
+                            break
+                        except:
+                            pass
                         pass
             elif self.android_version == 9:
                 while True:
                     try:
-                        self.driver.find_element_by_id('com.android.packageinstaller:id/permission_allow_button').click()
+                        self.driver.find_element_by_id(
+                            'com.android.packageinstaller:id/permission_allow_button').click()
                         break
                     except:
                         pass
+
+
         time.sleep(2)
 
-    # driver.find_element_by_id('com.intelligent.tapp.test:id/add').click()
-    # time.sleep(2)
-    # read(driver)
-    # 跳过教程
-    # driver.find_element_by_id('com.intelligent.tapp.test:id/menuSkip').click()
-    # time.sleep(0.2)
-    # driver.find_element_by_id('com.intelligent.tapp.test:id/md_button_positive').click()
-    # time.sleep(1)
+
+        # driver.find_element_by_id('com.intelligent.tapp.test:id/add').click()
+        # time.sleep(2)
+        # read(driver)
+        # 跳过教程
+        # driver.find_element_by_id('com.intelligent.tapp.test:id/menuSkip').click()
+        # time.sleep(0.2)
+        # driver.find_element_by_id('com.intelligent.tapp.test:id/md_button_positive').click()
+        # time.sleep(1)
 
     def addlock(self):
-
         # 未绑定tapplock情况，添加新锁
 
         while True:
