@@ -46,7 +46,7 @@ class Appium_star(tapplock, open_tapplock):
                 pass
         # print(str(j))
         file = open(
-            'C:/Users/Tapplock/AppData/Local/Programs/Python/untitled/venv/Lib/python-appium/tests/twoc/password.txt',
+            'C:password.txt',
             'r+')
         password = file.read()
         tapplock(driver, android_version).login(password, ifnew=False)  # 登陆用户
