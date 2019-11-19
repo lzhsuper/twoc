@@ -28,7 +28,7 @@ class Appium_star(tapplock, open_tapplock):
             'deviceName': i,  # 测试设备ID
             'appPackage': 'com.intelligent.tapp.test',
             'appActivity': 'com.intelligent.tapp.ui.user.splash.SplashActivity',
-            # 'app': 'C:\\Users\\Tapplock\\AppData\\Local\\Programs\\Python\\untitled\\venv\\Lib\\site-packages\\python-appium\\tests\\twoc\\two_c.apk',
+            # 'app': 'C:\\Users\\1.apk',
             'newCommandTimeout': 30,
             # 'automationName': 'Appium',
             'unicodeKeyboard': True,  # 编码,可解决中文输入问题
