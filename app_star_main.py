@@ -24,12 +24,11 @@ class Appium_star(tapplock, open_tapplock):
         # time.sleep(times)
         config = {
             'platformName': 'Android',  # 平台
-            'platformVersion': 9,  # 系统版本
+            'platformVersion': android_version,  # 系统版本
             'deviceName': i,  # 测试设备ID
             'appPackage': 'com.intelligent.tapp.test',
             'appActivity': 'com.intelligent.tapp.ui.user.splash.SplashActivity',
             # 'app': 'C:\\Users\\Tapplock\\AppData\\Local\\Programs\\Python\\untitled\\venv\\Lib\\site-packages\\python-appium\\tests\\twoc\\two_c.apk',
-            # apk路径
             'newCommandTimeout': 30,
             # 'automationName': 'Appium',
             'unicodeKeyboard': True,  # 编码,可解决中文输入问题
