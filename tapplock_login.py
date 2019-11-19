@@ -53,6 +53,7 @@ class tapplock(threading.Thread):
                         self.driver.find_element_by_id('com.intelligent.tapp.test:id/next').click()
                         break
                     except:
+                        time.sleep(0.5)
                         pass
         username.send_keys('877840950@qq.com')
         self.driver.find_element_by_id('com.intelligent.tapp.test:id/password').send_keys(password)
